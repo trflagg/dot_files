@@ -92,7 +92,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'sjl/gundo.vim'
-
+Plugin 'itchyny/lightline.vim'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
