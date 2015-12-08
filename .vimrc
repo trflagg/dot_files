@@ -69,6 +69,18 @@ nnoremap E $
 " --------- Shortcuts ---------------------------
 " jk is escape
 inoremap jk <esc>
+
+" leader is a comma
+let mapleader="," 
+
+" manage tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR> 
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 "  " initiate Vundle
 let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
@@ -79,5 +91,8 @@ Plugin 'gmarik/Vundle.vim'
 "  " start plugin defintion
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'sjl/gundo'
+Plugin 'sjl/gundo.vim'
 
+" Put all plugins before this line
+call vundle#end()
+filetype plugin indent on
