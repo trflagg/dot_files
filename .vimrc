@@ -81,6 +81,10 @@ map <leader>tm :tabmove
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR> 
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 "  " initiate Vundle
 let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
@@ -93,6 +97,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'sjl/gundo.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rking/ag.vim'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
