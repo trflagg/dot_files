@@ -66,6 +66,14 @@ set hlsearch            " highlight matches
 nnoremap B ^
 nnoremap E $
 
+" --------- CntrlP ---------------------
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 " --------- Shortcuts ---------------------------
 " jk is escape
 inoremap jk <esc>
@@ -99,6 +107,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
