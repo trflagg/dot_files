@@ -53,6 +53,8 @@ set tabstop=2       " number of visual spaces per TAB
 set softtabstop=2   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
 
+set shiftwidth=2
+
 set showcmd             " show command in bottom bar
 " set cursorline          " highlight current line
 set wildmenu            " visual autocomplete for command menu
@@ -77,6 +79,10 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" ---------- lightline -----------
+set laststatus=2
+
 " --------- Shortcuts ---------------------------
 " jk is escape
 inoremap jk <esc>
