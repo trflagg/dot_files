@@ -48,6 +48,13 @@ set viminfo='100,f1
 " non-typed comments
 set lazyredraw
 
+" move backup and swaps to /tmp
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
 " ------------ Usability ---------------------------------------
 set tabstop=2       " number of visual spaces per TAB
 set softtabstop=2   " number of spaces in tab when editing
