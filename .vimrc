@@ -126,6 +126,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/Vim-fugitive'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
