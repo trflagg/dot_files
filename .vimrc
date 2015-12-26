@@ -66,6 +66,9 @@ set showcmd             " show command in bottom bar
 " set cursorline          " highlight current line
 set wildmenu            " visual autocomplete for command menu
 
+" strip trailing whitespace from specific file types
+autocmd FileType javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
