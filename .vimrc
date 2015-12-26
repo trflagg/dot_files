@@ -67,7 +67,7 @@ set showcmd             " show command in bottom bar
 set wildmenu            " visual autocomplete for command menu
 
 " strip trailing whitespace from specific file types
-autocmd FileType javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType javascript,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
