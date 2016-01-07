@@ -67,7 +67,7 @@ set showcmd             " show command in bottom bar
 set wildmenu            " visual autocomplete for command menu
 
 " strip trailing whitespace from specific file types
-autocmd FileType javascript,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType javascript,scss,bash autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
@@ -89,6 +89,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " ---------- lightline -----------
 set laststatus=2
@@ -130,6 +131,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/Vim-fugitive'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
