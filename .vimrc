@@ -89,8 +89,9 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-
+let g:ctrlp_custom_ignore = { 
+  \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|bower_components)$'
+  \ }
 " ---------- lightline -----------
 set laststatus=2
 
@@ -133,6 +134,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/Vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/nerdcommenter.git'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
