@@ -69,6 +69,10 @@ set wildmenu            " visual autocomplete for command menu
 " strip trailing whitespace from specific file types
 autocmd FileType javascript,ruby,scss,bash autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" I always accidently enter recording mode
+noremap <Leader>q q
+noremap q <Nop>
+
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
