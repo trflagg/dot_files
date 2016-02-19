@@ -139,6 +139,7 @@ Plugin 'tpope/Vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'tpope/vim-surround.git'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
