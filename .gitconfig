@@ -1,0 +1,32 @@
+[alias]
+	st = status
+	ll = ! git log --oneline -10 | cat
+	last = log -p -1
+    lmfs = ! git log --name-only -1| cat
+    lmfso = ! git log --name-only --pretty=format: -1 | cat    
+	co = checkout
+	lfs = log --name-status
+	rb = rebase
+	br = branch
+  cm = commit
+  vm = ! vim $(git ls-files -m)
+	inject = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+[user]
+	name = Taylor Flagg
+	email = trflagg@gmail.com 
+[core]
+	excludesfile = /Users/taylor.flagg/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
