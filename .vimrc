@@ -140,6 +140,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'tpope/vim-surround.git'
+Plugin 'aaronj1335/underscore-templates.vim'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
