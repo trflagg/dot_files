@@ -7,6 +7,7 @@
 
 - link:
     ~/.gitconfig: gitconfig
+    ~/.spacemacs: spacemacs
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.vim: vim
