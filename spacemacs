@@ -10,7 +10,7 @@ values."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs-base
+   dotspacemacs-distribution 'spacemacs
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -23,18 +23,21 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
      emacs-lisp
-     ;; git
-     ;; markdown
-     ;; org
+     git
+     markdown
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      ;; version-control
+     osx
+     javascript
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -42,7 +45,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(smartparens)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -95,19 +98,15 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '( spacemacs-dark
                          spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -206,7 +205,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -230,7 +229,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -249,6 +248,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  (setq-default evil-escape-delay 0.4)
+  (setq-default evil-escape-key-sequence "jk")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
