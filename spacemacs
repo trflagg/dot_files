@@ -18,6 +18,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     graphviz
+     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -35,9 +37,12 @@ values."
      ;; spell-checking
      syntax-checking
      ;; version-control
-     osx
+     ;; comment out osx mode when getting Mac error -1700 when updating/deleting packages
+     ;; osx
      javascript
      themes-megapack
+     html
+     react
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -98,7 +103,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '( spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -250,7 +255,45 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   (setq-default evil-escape-delay 0.4)
   (setq-default evil-escape-key-sequence "jk")
+
+
+  ; from https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bframeworks/react
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+      (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+
+;  Taylor: to fix stupid trash bug
+ (if (executable-find "trash")
+      (defun system-move-file-to-trash (file)
+        "Use `trash' to move FILE to the system trash.
+Can be installed with `brew install trash', or `brew install osxutils`''."
+        (call-process (executable-find "trash") nil 0 nil file))
+    ;; regular move to trash directory
+    (setq trash-directory "~/.Trash/emacs"))
+  ; melpa library
+  (require 'package) ;; You might already have this line
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/"))
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (package-initialize) ;; You might already have this line
+  ;(use-package write-room)
+  (setq-default dotspacemacs-configuration-layers '(writeroom))
   )
+
+; Taylor: disable autosave
+(setq auto-save-default nil)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
