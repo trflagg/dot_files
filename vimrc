@@ -175,3 +175,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on
 
+
+" Taylor - colorscheme
+colo molokai
