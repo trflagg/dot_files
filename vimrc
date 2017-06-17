@@ -18,7 +18,7 @@ filetype plugin on
 filetype indent on
 
 " reload files changed outside vim
-:set autoread         
+set autoread         
 
 " encoding is utf 8
 set encoding=utf-8
@@ -73,6 +73,9 @@ autocmd FileType javascript,ruby,scss,bash autocmd BufWritePre <buffer> :%s/\s\+
 noremap <Leader>q q
 noremap q <Nop>
 
+" <tab> switches to last used buffer
+nmap <tab> :b#<cr>
+
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -98,6 +101,15 @@ let g:ctrlp_custom_ignore = {
   \ }
 " ---------- lightline -----------
 set laststatus=2
+" show relative filepath
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightLineFilename'
+      \ }
+      \ }
+function! LightLineFilename()
+    return expand('%')
+  endfunction
 
 " --------- Shortcuts ---------------------------
 " jk is escape
@@ -120,6 +132,25 @@ nnoremap <leader>a :Ag
 
 " open NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinPos = "right"
+" close nerdtree if its the only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" nerdcommenter
+" Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+"
+" " Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 "  " initiate Vundle
 let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
@@ -141,6 +172,9 @@ Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'aaronj1335/underscore-templates.vim'
+Plugin 'w0rp/ale'
+Plugin 'christoomey/vim-tmux-navigator'
 " Put all plugins before this line
 call vundle#end()
 filetype plugin indent on
+
