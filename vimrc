@@ -171,32 +171,37 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 " ---------------------- PLUGIN CONFIGURATION ----------------------
-"  " initiate Vundle
-let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
-call vundle#begin()
-"  " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Helper for Plug conditionals
+" e.g: Plug 'benekastah/neomake', Cond(has('nvim'))
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
-"  " start plugin defintion
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'sjl/gundo.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/Vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'tpope/vim-surround.git'
-Plugin 'aaronj1335/underscore-templates.vim'
-Plugin 'w0rp/ale'
-Plugin 'christoomey/vim-tmux-navigator'
-" Put all plugins before this line
-call vundle#end()
-filetype plugin indent on
-
+" PLUG
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/bundle')
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'sjl/gundo.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/Vim-fugitive'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'aaronj1335/underscore-templates.vim'
+Plug 'w0rp/ale'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'sbdchd/neoformat'
+call plug#end()
 
 " Taylor - colorscheme
 colo molokai
