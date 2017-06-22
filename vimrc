@@ -12,6 +12,22 @@ syntax on
 " and show line numbers
 set number
 
+" show relative line numbers too
+"set relativenumber
+
+" always show 5 lines around the cursor
+set scrolloff=5 
+
+" open vsplits to the right
+set splitright
+
+" Highlight current line but on current window only
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
 " make vim try to detect file types and load plugins for them
 filetype on
 filetype plugin on
@@ -96,6 +112,12 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --ignore ".git"  -g ""'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = { 
+  \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|bower_components)$'
+  \ }
+" CtrlP to leader p
+noremap <leader>p :CtrlP<cr>
+"
 " ---------- lightline -----------
 set laststatus=2
 " show relative filepath
