@@ -1,6 +1,7 @@
 [alias]
 	st = status
 	ll = ! git log --oneline -10 | cat
+  al = log -p
 	last = log -p -1
     lmfs = ! git log --name-only -1| cat
     lmfso = ! git log --name-only --pretty=format: -1 | cat    
@@ -9,6 +10,7 @@
 	rb = rebase
 	br = branch
   cm = commit
+  df = diff
   vm = ! vim $(git ls-files -m)
 	inject = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
 [user]

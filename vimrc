@@ -92,6 +92,9 @@ noremap q <Nop>
 " <tab> switches to last used buffer
 nmap <tab> :b#<cr>
 
+" Fastfile is used by fastlane. Let vim know it's a ruby file
+autocmd BufNewFile,BufRead Fastfile set syntax=ruby
+
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -112,6 +115,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --ignore ".git"  -g ""'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_use_caching = 0
 let g:ctrlp_custom_ignore = { 
   \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|bower_components)$'
   \ }
@@ -169,6 +173,13 @@ let g:NERDCommentEmptyLines = 1
 " " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+" Colorizer
+" Don't highlight color names
+let g:colorizer_colornames = 0
+
+" neoformat
+" Run prettier format when saving .js
+" autocmd BufWritePre *.js Neoformat
 
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 " Helper for Plug conditionals
@@ -201,6 +212,7 @@ Plug 'aaronj1335/underscore-templates.vim'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sbdchd/neoformat'
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 " Taylor - colorscheme
