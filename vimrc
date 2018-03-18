@@ -89,6 +89,10 @@ autocmd FileType javascript,ruby,scss,bash autocmd BufWritePre <buffer> :%s/\s\+
 noremap <Leader>q q
 noremap q <Nop>
 
+" Turn off setting visual selected text to lowercase
+" I always do this accidently when I didn't mean to
+vnoremap u <Nop>
+
 " <tab> switches to last used buffer
 nmap <tab> :b#<cr>
 
@@ -181,6 +185,23 @@ let g:colorizer_colornames = 0
 " Run prettier format when saving .js
 " autocmd BufWritePre *.js Neoformat
 
+" This allows jsx syntax highlighting in js files
+let g:jsx_ext_required = 0
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+
+" Format json with a simple function
+" (will format entire file)
+com! FormatJSON %!python -m json.tool
+
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 " Helper for Plug conditionals
 " e.g: Plug 'benekastah/neomake', Cond(has('nvim'))
@@ -200,10 +221,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sjl/gundo.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'tpope/Vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdcommenter'
@@ -213,6 +232,10 @@ Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sbdchd/neoformat'
 Plug 'chrisbra/Colorizer'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Taylor - colorscheme
