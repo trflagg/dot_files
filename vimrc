@@ -181,6 +181,10 @@ let g:NERDTrimTrailingWhitespace = 1
 " Don't highlight color names
 let g:colorizer_colornames = 0
 
+" Original molokai background
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 " neoformat
 " Run prettier format when saving .js
 " autocmd BufWritePre *.js Neoformat
@@ -236,7 +240,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+Plug 'nightsense/office'
+Plug 'nightsense/vimspectr'
+Plug 'nikvdp/ejs-syntax'
 call plug#end()
+colorscheme molokai
 
-" Taylor - colorscheme
-colo molokai
