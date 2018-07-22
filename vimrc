@@ -217,8 +217,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/bundle')
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } 
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sjl/gundo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'rking/ag.vim'
@@ -236,7 +236,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+Plug 'pR0Ps/molokai-dark'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " Taylor - colorscheme
-colo molokai
+colorscheme molokai-dark
