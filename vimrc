@@ -83,7 +83,7 @@ set showcmd             " show command in bottom bar
 set wildmenu            " visual autocomplete for command menu
 
 " strip trailing whitespace from specific file types
-autocmd FileType javascript,ruby,scss,bash autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType javascript,ruby,scss,bash,typescript autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " I always accidently enter recording mode
 noremap <Leader>q q
@@ -202,6 +202,33 @@ autocmd FileChangedShellPost *
 " (will format entire file)
 com! FormatJSON %!python -m json.tool
 
+" vim-tslint told me this would integrate vim-tslint and tsyquyomi
+augroup tslint
+  function! s:typescript_after(ch, msg)
+    let cnt = len(getqflist())
+    if cnt > 0
+      echomsg printf('[Tslint] %s errors', cnt)
+    endif
+  endfunction
+  let g:tslint_callbacks = {
+        \ 'after_run': function('s:typescript_after')
+        \ }
+
+"  let g:tsuquyomi_disable_quickfix = 1
+
+  function! s:ts_quickfix()
+    let winid = win_getid()
+    execute ':TsuquyomiGeterr'
+    call tslint#run('a', winid)
+  endfunction
+
+  autocmd BufWritePost *.ts,*.tsx silent! call s:ts_quickfix()
+"  autocmd InsertLeave *.ts,*.tsx silent! call s:ts_quickfix()
+augroup END
+
+" filetypes for jsx, tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 " Helper for Plug conditionals
 " e.g: Plug 'benekastah/neomake', Cond(has('nvim'))
@@ -236,6 +263,13 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
+"Plug 'Quramy/tsuquyomi'
+Plug 'heavenshell/vim-tslint'
+Plug 'ianks/vim-tsx'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 call plug#end()
 
 " Taylor - colorscheme
