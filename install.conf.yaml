@@ -9,6 +9,8 @@
     ~/.bashrc: bashrc
     ~/.bash_profile: bash_profile
     ~/.gitconfig: gitconfig
+    ~/.git-completion.bash: git-completion.bash
+    ~/.git-prompt.sh: git-prompt.sh
     ~/.spacemacs: spacemacs
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
