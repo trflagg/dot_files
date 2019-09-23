@@ -99,6 +99,16 @@ nmap <tab> :b#<cr>
 " Fastfile is used by fastlane. Let vim know it's a ruby file
 autocmd BufNewFile,BufRead Fastfile set syntax=ruby
 
+" Set the filetype based on the file's extension, but only if
+" " 'filetype' has not already been set
+au BufRead,BufNewFile *.ejs setfiletype html
+
+" Disable comments continuing when hit enter for new line
+set formatoptions-=cro
+
+" Remove hidden fugitive buffers
+"autocmd BufReadPost fugitive://* set bufhidden=delete
+
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -156,6 +166,22 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " open ag.vim
 nnoremap <leader>a :Ag
+
+" Taylor - npm run fix
+nnoremap <leader>f :!npm run fix
+
+" Taylor - git fugitive
+" Gdiff for conflict resolution
+nnoremap <leader>ge :Gedit
+nnoremap <leader>gs :Gstatus
+nnoremap <leader>gb :Gbrowse
+nnoremap <leader>gd :Gdiff
+
+" Taylor = split diffs vertically
+:set diffopt+=vertical
+
+" End conflict resolution
+nnoremap <leader>go :only
 
 " open NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>

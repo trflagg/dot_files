@@ -26,8 +26,7 @@ hs.hotkey.bind(mash, 'up', function() hs.window.focusedWindow():move(units.top50
 hs.hotkey.bind(mash, 'down', function() hs.window.focusedWindow():move(units.bot50,      nil, true) end)
 hs.hotkey.bind(mash, 'm', function() hs.window.focusedWindow():move(units.maximum,    nil, true) end)
 hs.hotkey.bind(mash, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
+hs.hotkey.bind(mash, 'n', function() hs.window.focusedWindow():moveToScreen(hs.screen.mainScreen():next()) end)
 
 hs.loadSpoon("AClock")
 hs.hotkey.bind(mash, 't', function() spoon.AClock:toggleShow() end)
-
-hs.loadSpoon("BingDaily")

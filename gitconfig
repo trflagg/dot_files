@@ -7,10 +7,12 @@
     lmfso = ! git log --name-only --pretty=format: -1 | cat    
 	co = checkout
 	lfs = log --name-status
+  loo = log --oneline
 	rb = rebase
 	br = branch
   cm = commit
   df = diff
+  d = diff
   difff = diff ':!*.snap'
   lastf = log -p -1 ':!*.snap'
   vm = ! vim $(git ls-files -m)
@@ -23,10 +25,13 @@
 	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path = opendiff 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+#driver for merging Xcode project files
+[mergetool "mergepbx"]
+  cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 [push]
 	default = simple
 [credential]
@@ -35,3 +40,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[diff]
+	tool = opendiff

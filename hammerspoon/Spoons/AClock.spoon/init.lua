@@ -40,9 +40,9 @@ function obj:toggleShow()
         local mainScreen = hs.screen.mainScreen()
         local mainRes = mainScreen:fullFrame()
         self.canvas:frame({
-            x = (mainRes.w-300)/2,
+            x = (mainRes.w-500)/2,
             y = (mainRes.h-230)/2,
-            w = 300,
+            w = 500,
             h = 230
         })
         self.canvas[1].text = os.date("%H:%M")
