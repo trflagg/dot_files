@@ -22,7 +22,7 @@
 	email = trflagg@gmail.com 
 [core]
 	excludesfile = /Users/taylor.flagg/.gitignore_global
-	editor = vim
+	editor = nvim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = opendiff 

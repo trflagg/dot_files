@@ -59,6 +59,6 @@ pidportfunction() {
 alias pidport=pidportfunction
 
 # swap neovim for vim
-export VISUAL=nvim
+export VISUAL="/usr/local/bin/nvim"
 alias vim=nvim
 alias vi=nvim
