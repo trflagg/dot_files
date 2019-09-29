@@ -85,16 +85,6 @@ set wildmenu            " visual autocomplete for command menu
 " strip trailing whitespace from specific file types
 autocmd FileType javascript,ruby,scss,bash,typescript autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" I always accidently enter recording mode
-noremap <Leader>q q
-noremap q <Nop>
-
-" Turn off setting visual selected text to lowercase
-" I always do this accidently when I didn't mean to
-vnoremap u <Nop>
-
-" <tab> switches to last used buffer
-nmap <tab> :b#<cr>
 
 " Fastfile is used by fastlane. Let vim know it's a ruby file
 autocmd BufNewFile,BufRead Fastfile set syntax=ruby
@@ -112,50 +102,9 @@ set formatoptions-=cro
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
-" Press Space to turn off highlighting and clear any message already
-" displayed.
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" ------------ Moving ---------------------------------------
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" --------- Shortcuts ---------------------------
-" jk is escape
-inoremap jk <esc>
-
-" leader is a comma
-let mapleader="," 
-
-" manage tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR> 
-
-" open ag.vim
-nnoremap <leader>a :Ag
-
-" Taylor - npm run fix
-nnoremap <leader>f :!npm run fix
-
-" Taylor - git fugitive
-" Gdiff for conflict resolution
-nnoremap <leader>ge :Gedit
-nnoremap <leader>gs :Gstatus
-nnoremap <leader>gb :Gbrowse
-nnoremap <leader>gd :Gdiff
 
 " Taylor = split diffs vertically
 :set diffopt+=vertical
-
-" End conflict resolution
-nnoremap <leader>go :only
-
 
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
