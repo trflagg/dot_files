@@ -7,6 +7,8 @@
 " don't make vim compatible with vi 
 set nocompatible
 
+set noswapfile
+
 " turn on syntax highlighting
 syntax on
 " and show line numbers
@@ -123,5 +125,8 @@ com! FormatJSON %!python -m json.tool
 " filetypes for jsx, tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
+let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
+
 " Taylor - colorscheme
 colo molokai
+

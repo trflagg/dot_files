@@ -1,4 +1,3 @@
-
 " I always accidently enter recording mode
 noremap <Leader>q q
 noremap q <Nop>
@@ -51,4 +50,17 @@ nnoremap <leader>gd :Gdiff
 " End conflict resolution
 nnoremap <leader>go :only
 
+" Edit config files
+:nnoremap <leader>s :source % 
+:nnoremap <leader>ev :vsplit ~/.vimrc
+:nnoremap <leader>es :vsplit ~/.config/nvim/shortcuts.vim
+:nnoremap <leader>ep :vsplit ~/.config/nvim/plugins.vim
+:nnoremap <leader>ew :vsplit ~/.config/nvim/writing.vim
 
+:nnoremap <leader>ec :vsplit ~/.config/nvim/after/plugin/coc.vim
+
+" Plug
+:nnoremap <leader>pi :PlugInstall
+
+" Add writing options pack
+:nnoremap <leader>wm :packadd writing

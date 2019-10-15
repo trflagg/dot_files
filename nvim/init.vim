@@ -8,3 +8,4 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/shortcuts.vim
+source ~/.config/nvim/writing.vim

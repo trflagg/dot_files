@@ -97,6 +97,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+"
+" Taylor - colorscheme
+colo molokai
+
 call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -120,9 +124,26 @@ Plug 'tpope/vim-fugitive'
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 "Plug 'Quramy/tsuquyomi'
-Plug 'heavenshell/vim-tslint'
 Plug 'ianks/vim-tsx'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+Plug 'matveyt/vim-modest'
+Plug 'olox/vim-colorscheme-switcher'
+
+" COC
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
+
+" Writing mode
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo', 'dir': '~/.config/nvim/pack/writing/opt/goyo' }
+Plug 'junegunn/limelight.vim', { 'dir': '~/.config/nvim/pack/writing/opt/limelight' }
+Plug 'dpelle/vim-LanguageTool', { 'on': 'LanguageToolCheck', 'dir': '~/.config/nvim/pack/writing/opt/languagetool' }
 call plug#end()
 
