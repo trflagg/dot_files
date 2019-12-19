@@ -99,7 +99,7 @@ au BufRead,BufNewFile *.ejs setfiletype html
 set formatoptions-=cro
 
 " Remove hidden fugitive buffers
-"autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " ----------- Searching ----------------------------------------
 set incsearch           " search as characters are entered
@@ -130,3 +130,14 @@ let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
 " Taylor - colorscheme
 colo molokai
 
+" set path to search based on current directory with gf
+:set path+=**
+
+" toggle line numbers based on mode
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
