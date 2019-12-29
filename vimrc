@@ -14,9 +14,6 @@ syntax on
 " and show line numbers
 set number
 
-" show relative line numbers too
-"set relativenumber
-
 " always show 5 lines around the cursor
 set scrolloff=5 
 
@@ -128,6 +125,8 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
 
 " Taylor - colorscheme
+" for truecolor:
+"set termguicolors
 colo molokai
 
 " set path to search based on current directory with gf
