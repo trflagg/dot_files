@@ -121,6 +121,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 "Plug 'Quramy/tsuquyomi'
@@ -129,8 +130,8 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'matveyt/vim-modest'
-Plug 'olox/vim-colorscheme-switcher'
 
+Plug 'tpope/vim-abolish'
 " COC
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
