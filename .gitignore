@@ -1,2 +1,6 @@
 vim/.netrwhist
 .DS_Store
+vim/bundle
+nvim/pack/writing
+nvim/writing
+vim/sessions
