@@ -24,9 +24,6 @@ function! s:show_documentation()
 endfunction
 
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 
