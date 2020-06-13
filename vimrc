@@ -135,6 +135,11 @@ colo molokai
 " toggle line numbers based on mode
 :set number relativenumber
 
+function Solarize()
+  set background=light
+  colorscheme solarized
+endfunction
+
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber

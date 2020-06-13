@@ -25,7 +25,8 @@ endfunction
 
 
 nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+" I don't use it and it conflicts with thesaurus
+" nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 
 " List errors
 nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<cr>

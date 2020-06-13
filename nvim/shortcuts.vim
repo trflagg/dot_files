@@ -64,8 +64,10 @@ nnoremap <leader>go :only
 
 " change to my favorite dark colorscheme
 :nnoremap <leader>cd :colo molokai<CR>
-" change to my favorite light colorscheme
-:nnoremap <leader>cl :colorscheme morning<CR>
+" usee solarize colorscheme
+" function is defined in .vimrc
+:nnoremap <leader>so :call Solarize()<CR>
+
 
 " Add writing options pack
 :nnoremap <leader>wm :packadd writing

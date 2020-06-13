@@ -82,6 +82,12 @@ augroup tslint
 "  autocmd InsertLeave *.ts,*.tsx silent! call s:ts_quickfix()
 augroup END
 
+" remove default thesaurus query maps
+let g:tq_map_keys = 0
+nnoremap <Leader>ts :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap <Leader>ty y:ThesaurusQueryReplace <C-r>"<CR>
+let g:tq_openoffice_en_file="/usr/local/share/myspell/dict/th_en_US_new"
+
 
 " ---------------------- PLUGIN Installation ----------------------
 " Helper for Plug conditionals
@@ -146,5 +152,7 @@ Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and st
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo', 'dir': '~/.config/nvim/pack/writing/opt/goyo' }
 Plug 'junegunn/limelight.vim', { 'dir': '~/.config/nvim/pack/writing/opt/limelight' }
 Plug 'dpelle/vim-LanguageTool', { 'on': 'LanguageToolCheck', 'dir': '~/.config/nvim/pack/writing/opt/languagetool' }
+Plug 'reedes/vim-pencil'
+Plug 'ron89/thesaurus_query.vim'
 call plug#end()
 
