@@ -8,10 +8,10 @@ nmap ` :b#<cr>
 
 " Maps ESC to exit terminal's insert mode
 "if has('nvim')
- "tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
 "endif
 
-" Press Space to turn off highlighting and clear any message 
+" Press Space to turn off highlighting and clear any message
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " move to beginning/end of line
@@ -30,17 +30,17 @@ nnoremap <leader>x :!npm run fix
 nnoremap <leader>F :Neoformat prettier<CR>
 nnoremap <leader><leader> :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
-:nnoremap <leader>da :Dash 
+:nnoremap <leader>da :Dash
 
 " End conflict resolution
 nnoremap <leader>go :only
 
-:nnoremap <leader>s :source %<CR> 
+:nnoremap <leader>s :source %<CR>
 :nnoremap <leader>ev :vsplit ~/.vimrc<CR>
 :nnoremap <leader>ei :vsplit ~/.config/nvim/init.vim<CR>
 :nnoremap <leader>es :vsplit ~/.config/nvim/shortcuts.vim<CR>
 :nnoremap <leader>ep :vsplit ~/.config/nvim/plugins.vim<CR>
-:nnoremap <leader>el :vsplit ~/.config/nvim/lsp.vim<CR>
+:nnoremap <leader>el :vsplit ~/.config/nvim/lua/my/lsp.lua<CR>
 :nnoremap <leader>eh :vsplit ~/.config/nvim/highlights.vim<CR>
 ":nnoremap <leader>ew :vsplit ~/.config/nvim/writing.vim
 

@@ -1,4 +1,3 @@
-lua require('my/lsp')
 
 autocmd Filetype typescript,typescript.tsx,typescriptreact setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
@@ -12,3 +11,5 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
 
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
+lua require('./my/lsp')

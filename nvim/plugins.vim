@@ -25,14 +25,29 @@ Plug 'Iron-E/nvim-highlite'
 " :TSIntall typescript
 " :TSIntall javascript
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'mhinz/vim-startify'
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'typescript', 'css', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
 "Plug 'itomasr/molokai'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
 call plug#end()
 
+" vim-completion
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+"g:completion_matching_ignore_case = 1
+let g:completion_matching_smart_case = 1
+let g:completion_matching_strategy_list = ['exact', 'fuzzy', 'substring', 'all']
 
 " Neoformat
 "
@@ -123,7 +138,6 @@ nmap <silent> tn :TestNearest<CR>
 nmap <silent> tf :TestFile<CR>
 nmap <silent> ts :TestSuite<CR>
 nmap <silent> tl :TestLast<CR>
-
 
 function! JestStrategy(cmd)
   let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
