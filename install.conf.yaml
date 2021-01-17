@@ -3,7 +3,7 @@
       create: true
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.bashrc: bashrc
@@ -14,10 +14,8 @@
     ~/.hammerspoon: hammerspoon
     ~/.spacemacs: spacemacs
     ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
-    ~/.vim: vim
     ~/.Xmodmap: xmodmap
     ~/.config/nvim: nvim
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
