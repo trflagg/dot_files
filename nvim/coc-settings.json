@@ -7,6 +7,8 @@
   "tslint.enable": true,
   "tslint.autoFixOnSave": true,
 
+  "eslint.filetypes": ["javascript", "javascriptreact"],
+
   // Run prettier (and others)
   "coc.preferences.formatOnSaveFiletypes": [
     "css",

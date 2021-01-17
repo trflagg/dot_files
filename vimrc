@@ -124,13 +124,15 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
 
+" set path to search based on current directory with gf
+:set path+=**
+
 " Taylor - colorscheme
 " for truecolor:
 "set termguicolors
 colo molokai
-
-" set path to search based on current directory with gf
-:set path+=**
+"colo neotrix
+"let g:neotrix_dark_contrast = "medium"
 
 " toggle line numbers based on mode
 :set number relativenumber

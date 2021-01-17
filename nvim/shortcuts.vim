@@ -1,6 +1,6 @@
 " I always accidently enter recording mode
-noremap <Leader>q q
-noremap q <Nop>
+"noremap <Leader>q q
+"noremap q <Nop>
 
 " Turn off setting visual selected text to lowercase
 " I always do this accidently when I didn't mean to
@@ -53,6 +53,7 @@ nnoremap <leader>go :only
 " Edit config files
 :nnoremap <leader>s :source % 
 :nnoremap <leader>ev :vsplit ~/.vimrc
+:nnoremap <leader>ei :vsplit ~/.config/nvim/init.vim
 :nnoremap <leader>es :vsplit ~/.config/nvim/shortcuts.vim
 :nnoremap <leader>ep :vsplit ~/.config/nvim/plugins.vim
 :nnoremap <leader>ew :vsplit ~/.config/nvim/writing.vim
@@ -69,5 +70,14 @@ nnoremap <leader>go :only
 :nnoremap <leader>so :call Solarize()<CR>
 
 
+" moving next and prev error
+:nnoremap <leader>cn :cn<CR>
+:nnoremap <leader>cp :cp<CR>
+:nnoremap <leader>cc :cc<CR>
+
+
 " Add writing options pack
 :nnoremap <leader>wm :packadd writing
+
+" Open dash
+:nnoremap <leader>da :Dash 

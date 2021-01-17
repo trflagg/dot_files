@@ -88,6 +88,26 @@ nnoremap <Leader>ts :ThesaurusQueryReplaceCurrentWord<CR>
 vnoremap <Leader>ty y:ThesaurusQueryReplace <C-r>"<CR>
 let g:tq_openoffice_en_file="/usr/local/share/myspell/dict/th_en_US_new"
 
+" ale
+let g:ale_fixers = {
+ \ 'javascript': ['prettier', 'eslint'],
+ \ 'typescript': ['prettier']
+ \ }
+
+let g:ale_cursor_detail = 0 
+let g:ale_echo_delay = 500
+let g:ale_lint_delay = 1000
+let g:ale_lint_in_text_change = 'never'
+let g:ale_lint_on_insert_leave = 1
+ 
+let g:ale_set_highlights = 0
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+
+let g:ale_fix_on_save = 1
+
+" markdown preview opens automatically
+let g:mkdp_auto_start = 1
 
 " ---------------------- PLUGIN Installation ----------------------
 " Helper for Plug conditionals
@@ -138,15 +158,19 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'matveyt/vim-modest'
 
 Plug 'tpope/vim-abolish'
+
+Plug 'tpope/vim-rails'
+
 " COC
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+"Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 "Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
+"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-tslint-plugin', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
 
 " Writing mode
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo', 'dir': '~/.config/nvim/pack/writing/opt/goyo' }
@@ -154,5 +178,14 @@ Plug 'junegunn/limelight.vim', { 'dir': '~/.config/nvim/pack/writing/opt/limelig
 Plug 'dpelle/vim-LanguageTool', { 'on': 'LanguageToolCheck', 'dir': '~/.config/nvim/pack/writing/opt/languagetool' }
 Plug 'reedes/vim-pencil'
 Plug 'ron89/thesaurus_query.vim'
+
+Plug 'rizzatti/dash.vim'
+
+Plug 'neovim/nvim-lspconfig'
+
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'senran101604/neotrix.vim'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
 
