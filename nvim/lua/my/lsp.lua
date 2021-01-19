@@ -26,10 +26,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
      spacing = 2,
      severity_limit = "Warning",
    },
-   -- Use a function to dynamically turn signs off
-   -- and on, using buffer local variables
-   --signs = function(bufnr, client_id)
-     --return vim.bo[bufnr].show_signs == false
-   --end,
  }
 )
+
+vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})

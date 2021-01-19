@@ -35,22 +35,22 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 call plug#end()
 
+"
 " vim-completion
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
-
 " Avoid showing message extra message when using completion
 set shortmess+=c
 "g:completion_matching_ignore_case = 1
 let g:completion_matching_smart_case = 1
-let g:completion_matching_strategy_list = ['exact', 'fuzzy', 'substring', 'all']
+let g:completion_matching_strategy_list = ['fuzzy', 'substring', 'exact', 'all']
+let g:completion_sorting =  "length"
 
-" Neoformat
 "
+" Neoformat
 augroup fmt
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat
@@ -62,17 +62,18 @@ let g:neoformat_basic_format_retab = 1
 " luarocks install --local formatter
 let g:neoformat_enabled_lua = ["luaformatter"]
 " npm i -g prettier-eslint-cli
-let g:neoformat_enabled_javascript = ["prettier"]
-let g:neoformat_enabled_typescript = ["prettier"]
+let g:neoformat_enabled_javascript = ["prettier-eslint"]
+let g:neoformat_enabled_typescript = ["tslint"]
+let g:neoformat_enabled_typescriptreact = ["tslint"]
 " npm i -g prettier
 let g:neoformat_enabled_css = ["prettier"]
 let g:neoformat_enabled_json = ["prettier"]
 
-" Nuake
 "
+" Nuake
 let g:nuake_position = "bottom"
 let g:nuake_start_insert = 0
-nnoremap <leader><space> :Nuake<CR>
+nnoremap <leader>n :Nuake<CR>
 tnoremap jk <C-\><C-n>
 
 "

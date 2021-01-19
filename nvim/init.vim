@@ -3,8 +3,8 @@
 
 set nocompatible
 set noswapfile
-syntax on 
-"set omnifunc=syntaxcomplete#Complete
+syntax on
+set omnifunc=syntaxcomplete#Complete
 set scrolloff=5
 set autoread
 set encoding=utf-8
@@ -22,9 +22,10 @@ set writebackup
 set showcmd
 set wildmenu
 set incsearch
- 
+set path+=**
 
-"set completeopt=menuone,noinsert,noselect
+
+set completeopt=menuone,noinsert,noselect
 set mouse=a
 set splitright
 set splitbelow
@@ -54,24 +55,25 @@ set statusline+=\ %l:%c
 set statusline+=%#Directory#
 set statusline+=\ %y
 
-let mapleader = ";"
+let mapleader = " "
 inoremap jk <esc>
 
 filetype on
 filetype plugin on
 filetype indent on
 
+
 " set filetypes as typescriptreact
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 
 
 lua require('my/utils')
 
 source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/lsp.vim
-source ~/.config/nvim/shortcuts.vim
 colorscheme onehalfdark
 source ~/.config/nvim/highlights.vim
+source ~/.config/nvim/lsp.vim
+source ~/.config/nvim/shortcuts.vim
 
 
 
@@ -120,5 +122,5 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 " Notification after file change
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 

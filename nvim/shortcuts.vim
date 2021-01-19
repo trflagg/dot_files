@@ -12,7 +12,7 @@ nmap ` :b#<cr>
 "endif
 
 " Press Space to turn off highlighting and clear any message
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+:nnoremap ; :nohlsearch<Bar>:echo<CR>
 
 " move to beginning/end of line
 nnoremap B ^
@@ -65,7 +65,7 @@ nnoremap <leader>go :only
 ":nnoremap <leader>wm :packadd writing
 
 " FZF
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <leader>ff :GFiles<CR>
 nnoremap <leader>fl :Lines<CR>
 nnoremap <leader>fa :Ag<CR>
@@ -95,6 +95,5 @@ nmap <leader>dn :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dh <Plug>VimspectorToggleBreakpoint
 nmap <leader>de <Plug>VimspectorToggleConditionalBreakpoint
-
 
 
