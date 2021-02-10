@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
-let g:netrw_dirhist_5='/Users/trflagg/Desktop/vimBackup20210116/nvim'
-let g:netrw_dirhist_4='/Users/trflagg/Desktop/vimBackup20210116'
-let g:netrw_dirhist_3='/Users/trflagg/.config'
-let g:netrw_dirhist_2='/Users/trflagg/Desktop/vimBackup20210116/nvim'
-let g:netrw_dirhist_1='/Users/trflagg/Desktop/vimBackup20210116'

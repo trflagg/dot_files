@@ -10,7 +10,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+"Plug 'nvim-lua/completion-nvim'
+Plug 'zxqfl/tabnine-vim'
+" :VimspectorInstall vscode-node-debug2
+" :VimspectorInstall debugger-for-chrome
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -21,10 +24,16 @@ Plug 'Lenovsky/nuake'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Iron-E/nvim-highlite'
 "Plug 'leafgarland/typescript-vim'
-"Plug 'peitalin/vim-jsx-typescript'
+Plug 'peitalin/vim-jsx-typescript'
+" or
+"Plug 'yuezk/vim-js'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+" or
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 " :TSIntall typescript
 " :TSIntall javascript
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'ervandew/supertab'
 Plug 'mhinz/vim-startify'
 Plug 'prettier/vim-prettier', {
@@ -33,21 +42,30 @@ Plug 'prettier/vim-prettier', {
 "Plug 'itomasr/molokai'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
+Plug 'alexaandru/nvim-lspupdate'
+Plug 'kosayoda/nvim-lightbulb'
+
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'dpelle/vim-LanguageTool'
+
+
+
 call plug#end()
 
 "
 " vim-completion
 " Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
+"set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
-set shortmess+=c
-"g:completion_matching_ignore_case = 1
-let g:completion_matching_smart_case = 1
-let g:completion_matching_strategy_list = ['fuzzy', 'substring', 'exact', 'all']
-let g:completion_sorting =  "length"
+"set shortmess+=c
+"g:
+"let g:completion_matching_smart_case = 1
+"let g:completion_matching_strategy_list = ['fuzzy', 'substring', 'exact', 'all']
+"let g:completion_sorting =  "length"
 
 "
 " Neoformat
@@ -62,7 +80,7 @@ let g:neoformat_basic_format_retab = 1
 " luarocks install --local formatter
 let g:neoformat_enabled_lua = ["luaformatter"]
 " npm i -g prettier-eslint-cli
-let g:neoformat_enabled_javascript = ["prettier-eslint"]
+let g:neoformat_enabled_javascript = ["prettier"]
 let g:neoformat_enabled_typescript = ["tslint"]
 let g:neoformat_enabled_typescriptreact = ["tslint"]
 " npm i -g prettier
@@ -92,13 +110,11 @@ function! s:gitModified()
   let files = systemlist('git ls-files -m 2>/dev/null')
   return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
-
 " same as above, but show untracked files, honouring .gitignore
 function! s:gitUntracked()
   let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
   return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
-
 let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']            },
       \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
@@ -108,43 +124,53 @@ let g:startify_lists = [
       \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
+let g:startify_skiplist = ['potter']
 
 "
 " vimspector
 fun! GotoWindow(id)
   :call win_gotoid(a:id)
 endfun
-
-let g:vimspector_base_dir = expand('$HOME/.config/vimspector-config')
-
-"func! CustomiseUI()
-"call win_gotoid( g:vimspector_session_windows.code )
-"endfunction
-
-"augroup MyVimspectorUICustomistaion
-"autocmd!
-"autocmd User VimspectorUICreated call CustomiseUI()
-"augroup END
-"
 func! AddToWatch()
   let word = expand("<cexpr>")
-  :echom word
   call vimspector#AddWatch(word)
 endfunction
+let g:vimspector_base_dir = expand('$HOME/.config/vimspector-config')
+let g:vimspector_sidebar_width = 120
+let g:vimspector_bottombar_height = 0
+nnoremap <leader>da :call vimspector#Launch()<CR>
+nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <leader>d? :call AddToWatch()<CR>
+nnoremap <leader>dx :call vimspector#Reset()<CR>
+nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
+nnoremap <S-k> :call vimspector#StepOut()<CR>
+nnoremap <S-l> :call vimspector#StepInto()<CR>
+nnoremap <S-j> :call vimspector#StepOver()<CR>
+nnoremap <leader>d_ :call vimspector#Restart()<CR>
+nnoremap <leader>dn :call vimspector#Continue()<CR>
+nnoremap <leader>drc :call vimspector#RunToCursor()<CR>
+nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<CR>
+let g:vimspector_sign_priority = {
+      \    'vimspectorBP':         998,
+      \    'vimspectorBPCond':     997,
+      \    'vimspectorBPDisabled': 996,
+      \    'vimspectorPC':         999,
+      \ }
 
+" vim-test
+"
 let test#strategy = "neovim"
 let test#neovim#term_position = "vertical"
-
+let g:test#javascript#runner = 'jest'
 nmap <silent> tn :TestNearest<CR>
 nmap <silent> tf :TestFile<CR>
 nmap <silent> ts :TestSuite<CR>
 nmap <silent> tl :TestLast<CR>
-
-function! JestStrategy(cmd)
-  let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
-  call vimspector#LaunchWithSettings( #{ configuration: 'jest', TestName: testName } )
-endfunction
-let g:test#custom_strategies = {'jest': function('JestStrategy')}
 
 "
 " vim_http

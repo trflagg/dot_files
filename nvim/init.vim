@@ -22,14 +22,16 @@ set writebackup
 set showcmd
 set wildmenu
 set incsearch
-set path+=**
+"set path+=**
 
 
 set completeopt=menuone,noinsert,noselect
 set mouse=a
 set splitright
 set splitbelow
-set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -57,6 +59,7 @@ set statusline+=\ %y
 
 let mapleader = " "
 inoremap jk <esc>
+inoremap kk <esc>
 
 filetype on
 filetype plugin on
@@ -65,12 +68,13 @@ filetype indent on
 
 " set filetypes as typescriptreact
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 
 
 lua require('my/utils')
 
 source ~/.config/nvim/plugins.vim
-colorscheme onehalfdark
+colorscheme palenight
 source ~/.config/nvim/highlights.vim
 source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/shortcuts.vim
